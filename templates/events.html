@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic Caffe</title>
+    <link rel="icon" href="/media/logo.png" type="image/png">
+    <link rel="icon" href="/media/logo.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/media/logo.png" sizes="16x16" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        footer {
+            background-color: #111;
+            color: #ddd;
+            padding: 30px 0;
+            font-size: 1rem;
+            border-top: 5px solid #FFD700;
+        }
+
+        .card-img-top {
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+            
+        }
+
+        .header {
+            position: relative;
+            height: 500px;
+            background-image: url('/media/produkt/galactic.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-text h1 {
+            font-size: 64px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.7);
+        }
+
+        .subtext {
+            font-size: 1.5rem;
+            color: #FFD700;
+        }
+
+        .progress {
+            height: 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #222;
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            font-weight: bold;
+            font-size: 1rem;
+            line-height: 30px;
+            text-align: center;
+            transition: width 0.5s ease-in-out;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+        }
+
+        .footer-link {
+            color: gold;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            margin: 0 12px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.3);
+            filter: brightness(1.2);
+        }
+        .card {
+            background: #1c1c1e;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .neon-button {
+            background: linear-gradient(90deg, #ff8c00, #ffcc00);
+            color: black;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 25px;
+            padding: 12px 30px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.8);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .neon-button:hover {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+            transform: scale(1.1);
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+            100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+        }
+
+        .header-text h1 {
+            font-size: 64px;
+            animation: glow 2s infinite alternate;
+        }
+
+        footer {
+            background-color: #111;
+            color: #ddd;
+            padding: 30px 0;
+            font-size: 1rem;
+            border-top: 5px solid #FFD700;
+            text-align: center;
+        }
+
+        .footer-link {
+            color: gold;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 1);
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="header">
+    <div class="header-text">
+        <h1>Galactic Cafe</h1>
+        <p class="subtext">Since 2017</p>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Идни Настани</h1>
+    <div class="row">
+        {% for event in events %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text">Дата: {{ event.date|date:"d M Y" }}</p>
+                        <p class="card-text">{{ event.description }}</p>
+
+                        <div class="progress mt-3">
+                            <div class="progress-bar 
+                                {% if event.percentage < 50 %} bg-success 
+                                {% elif event.percentage < 80 %} bg-warning 
+                                {% else %} bg-danger {% endif %}"
+                                 role="progressbar"
+                                 style="width: {{ event.percentage }}%;"
+                                 aria-valuenow="{{ event.percentage }}"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100">
+                                {{ event.percentage|floatformat:0 }}%
+                            </div>
+                        </div>
+                        <p class="text-center mt-2">Резервирано: {{ event.reservations_count }} / 52</p>
+
+                        
+                        <div class="text-center mt-3">
+                            <a href="tel:+38971844880" class="btn btn-danger">Резервирај!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">Нема идни настани.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="text-center mb-4">
+    <a href="/" class="btn neon-button">Назад кон Мени</a>
+</div>
+
+<footer class="text-center text-light py-3">
+    <div class="d-flex justify-content-center align-items-center">
+        <p class="mb-0 me-2">Најди не на:</p>
+        <a href="https://www.facebook.com/galacticcaffe/" target="_blank">
+            <img src="/media/icons/facebook.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/galacticcaffe" target="_blank">
+            <img src="/media/icons/instagram.png" alt="Instagram" class="social-icon">
+        </a>
+    </div>
+    <p class="mt-2">Дизајнирано од:
+        <a href="https://www.linkedin.com/in/marko-srbakov-a65b43235/" target="_blank" class="footer-link">
+            Marko Srbakov
+        </a>
+    </p>
+    <p class="mt-2" style="font-style: italic;">
+        Информации и резервации: <a href="tel:+38971844880">071 844 880</a>
+    </p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
