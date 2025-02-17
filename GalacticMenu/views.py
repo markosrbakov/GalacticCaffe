@@ -37,5 +37,5 @@ def product_by_category(request, category_name):
 def events_view(request):
     events = Event.objects.all()
     for event in events:
-        event.percentage = round((event.reservations_count / 52) * 100, 2)
+        event.percentage = round((event.reservations_count / 38) * 100, 2)
     return render(request, 'events.html', {'events': events})
