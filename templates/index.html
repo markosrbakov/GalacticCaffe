@@ -136,6 +136,20 @@
             padding-top: 50px;
             padding-bottom: 50px;
         }
+        .map-container {
+            width: 200px;  /* Ширина на мапата */
+            height: 120px; /* Висина на мапата */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin: 20px auto; /* Центрирање */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
         .row {
             margin-bottom: 30px;
@@ -193,6 +207,36 @@
             font-size: 64px;
             animation: glow 2s infinite alternate;
         }
+
+        .fun-facts {
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+            color: #888;
+            background-color: #f4f4f4;
+            border-left: 5px solid #FFD700;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center; /* Центрирање на текстот */
+        }
+
+        .fun-facts h3 {
+            font-size: 1.4rem; /* Помал font-size */
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .fun-facts ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .fun-facts li {
+            font-size: 1rem; /* Помал font-size */
+            color: #555;
+            margin: 5px 0;
+        }
+
+
     </style>
 </head>
 <body>
@@ -205,9 +249,16 @@
     </div>
 </div>
 
+<div class="fun-facts">
+    <h3>!! Fun Fact !!</h3>
+    <ul>
+        <li>Ние служиме повеќе од 250 чаши кафе дневно!</li>
+        <li>Најпопуларен пијалак: Espresso</li>
+    </ul>
+</div>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Изберете Категорија / Choose Category</h1>
+    <h1 class="text-center mb-4">Изберете Категорија</h1>
 
 
     <div class="row">
@@ -251,7 +302,16 @@
     <a href="/events" class="btn neon-button">Идни Настани</a>
 </div>
 
+
 <footer class="text-center text-light py-3">
+    <div class="map-container">
+        <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.0063405503765!2d22.462964476187857!3d41.633994380662294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1355fb0d5d140369%3A0x4f06287a079a2ed6!2sGalactic%20Caff%C3%A9!5e0!3m2!1sen!2smk!4v1739826404790!5m2!1sen!2smk"
+                allowfullscreen=""
+                loading="lazy">
+        </iframe>
+    </div>
+
     <div class="d-flex justify-content-center align-items-center">
         <p class="mb-0 me-2">Најди не на:</p>
         <a href="https://www.facebook.com/galacticcaffe/" target="_blank">
@@ -261,6 +321,7 @@
             <img src="/media/icons/instagram.png" alt="Instagram" class="social-icon">
         </a>
     </div>
+
     <p class="mt-2">Дизајнирано од:
         <a href="https://www.linkedin.com/in/marko-srbakov-a65b43235/" target="_blank" class="footer-link">
             Marko Srbakov
@@ -271,6 +332,7 @@
         Информации и резервации: <a href="tel:+38971844880">071 844 880</a>
     </p>
 </footer>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
