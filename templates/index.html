@@ -144,7 +144,7 @@
         h1 {
             font-size: 3rem;
             font-weight: bold;
-            color: #333;
+            
         }
 
         footer {
@@ -245,6 +245,9 @@
 </div>
 
 <div class="text-center mb-4">
+    <button onclick="scrollToTop()" class="btn neon-button">Врати се горе</button>
+</div>
+<div class="text-center mb-4">
     <a href="/events" class="btn neon-button">Идни Настани</a>
 </div>
 
@@ -291,6 +294,9 @@
 
 
         document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 
