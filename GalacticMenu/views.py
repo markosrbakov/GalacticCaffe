@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from GalacticMenu.models import Product, Event
+from django.utils import timezone
 
 def index(request):
     # Земаме сите продукти
@@ -35,7 +36,8 @@ def product_by_category(request, category_name):
 
 
 def events_view(request):
-    events = Event.objects.all()
+    # Филтрирање на настани што се во иднина (настани после денешниот датум)
+    events = Event.objects.filter(date__gte=timezone.now())  # Филтрирање по датум
     for event in events:
-        event.percentage = round((event.reservations_count / 38) * 100, 2)
+        event.percentage = round((event.reservations_count / 52) * 100, 2)  # Процент на резервации
     return render(request, 'events.html', {'events': events})
