@@ -39,5 +39,5 @@ def events_view(request):
     # Филтрирање на настани што се во иднина (настани после денешниот датум)
     events = Event.objects.filter(date__gte=timezone.now())  # Филтрирање по датум
     for event in events:
-        event.percentage = round((event.reservations_count / 52) * 100, 2)  # Процент на резервации
+        event.percentage = round((event.reservations_count / 37) * 100, 2)  # Процент на резервации
     return render(request, 'events.html', {'events': events})
