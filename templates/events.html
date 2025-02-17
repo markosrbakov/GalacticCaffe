@@ -204,7 +204,9 @@
     </div>
 </div>
 
-
+<div class="text-center mb-4">
+    <button onclick="scrollToTop()" class="btn neon-button">Врати се горе</button>
+</div>
 <div class="text-center mb-4">
     <a href="/" class="btn neon-button">Назад кон Мени</a>
 </div>
@@ -228,9 +230,15 @@
         Информации и резервации: <a href="tel:+38971844880">071 844 880</a>
     </p>
 </footer>
+<script>
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</script>
 
 </body>
 </html>
