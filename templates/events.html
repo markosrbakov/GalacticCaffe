@@ -176,7 +176,7 @@
                         <h5 class="card-title">{{ event.name }}</h5>
                         <p class="card-text">Дата: {{ event.date|date:"d M Y" }}</p>
                         <p class="card-text">{{ event.description }}</p>
-
+                        <p class="text-center mt-2">Резервирано:</p>
                         <div class="progress mt-3">
                             <div class="progress-bar 
                                 {% if event.percentage < 50 %} bg-success 
@@ -190,7 +190,7 @@
                                 {{ event.percentage|floatformat:0 }}%
                             </div>
                         </div>
-                        <p class="text-center mt-2">Резервирано: {{ event.reservations_count }} / 52</p>
+                        <p class="text-center mt-2">Резервирано:</p>
 
                         
                         <div class="text-center mt-3">
