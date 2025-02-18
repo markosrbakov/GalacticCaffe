@@ -201,11 +201,15 @@
                                  aria-valuenow="{{ event.percentage }}"
                                  aria-valuemin="0"
                                  aria-valuemax="100">
-                                {{ event.percentage|floatformat:0 }}%
+                                {% if event.percentage >= 100 %}
+                                    СИТЕ РЕЗЕРВАЦИИ СЕ ИСПОЛНЕТИ
+                                {% else %}
+                                    {{ event.percentage|floatformat:0 }}%
+                                {% endif %}
                             </div>
                         </div>
 
-                        
+
                         <div class="text-center mt-3">
                             <a href="tel:+38971844880" class="btn btn-danger">Резервирај!</a>
                         </div>
