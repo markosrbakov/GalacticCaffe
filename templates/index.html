@@ -236,7 +236,24 @@
             margin: 5px 0;
         }
 
+        @keyframes move-left-right {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
 
+        .fun-facts h3 {
+            animation: move-left-right 1s ease-in-out infinite;
+        }
+        .red-text {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -250,7 +267,7 @@
 </div>
 
 <div class="fun-facts">
-    <h3>!! Fun Fact !!</h3>
+    <h3><span class="red-text">!!</span> Fun Fact <span class="red-text">!!</span></h3>
     <ul>
         <li>Ние служиме повеќе од 250 чаши кафе дневно!</li>
         <li>Најпопуларен пијалак: Espresso</li>
@@ -294,14 +311,15 @@
         {% endfor %}
     </div>
 </div>
-
-<div class="d-flex justify-content-center gap-3">
+<div class="text-center mb-4">
     <button onclick="scrollToTop()" class="btn neon-button">Врати се горе</button>
+</div>
+<div class="text-center mb-4">
     <a href="/gallery" class="btn neon-button">Галерија</a>
+</div>
+<div class="text-center mb-4">
     <a href="/events" class="btn neon-button">Идни Настани</a>
 </div>
-</br>
-
 <footer class="text-center text-light py-3">
     <div class="map-container">
         <iframe
