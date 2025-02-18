@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from GalacticMenu.models import Product, Event
+from GalacticMenu.models import Product, Event, GalerijaKafic
 from django.utils import timezone
 
 def index(request):
