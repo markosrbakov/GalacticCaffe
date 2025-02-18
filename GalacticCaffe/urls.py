@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index, name='index'),  # Патека за главната страница
     path('category/<str:category_name>/', views.product_by_category, name='product_by_category'),  # Патека за категорија
     path('events/', views.events_view, name='events'),
+    path('gallery/', views.gallery_view, name='gallery'),
 ]
 
 
