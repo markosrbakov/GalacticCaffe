@@ -1,5 +1,5 @@
 from django.contrib import admin
-from GalacticMenu.models import Product,Event
+from GalacticMenu.models import Product,Event,GalerijaKafic
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'cena', 'kategorija', 'kreator')  # Подобрен приказ
@@ -28,3 +28,13 @@ class EventAdmin(admin.ModelAdmin):
         return request.user.is_superuser  # Само супер админи можат да уредуваат
 
 admin.site.register(Event, EventAdmin)
+
+
+
+
+class GalerijaKaficAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image', 'video')  # You can customize this to show other fields if needed
+    search_fields = ['id']  # You can search by image or video file if desired
+    list_filter = ['image', 'video']  # Filter by image or video type
+
+admin.site.register(GalerijaKafic, GalerijaKaficAdmin)
