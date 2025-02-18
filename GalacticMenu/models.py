@@ -41,3 +41,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class GalerijaKafic(models.Model):
+    image = models.ImageField(upload_to='gallery/', blank=True, null=True)
+    video = models.FileField(upload_to='gallery/videos/', blank=True, null=True)
+
+    def is_image(self):
+        return bool(self.image)
+
+    def is_video(self):
+        return bool(self.video)
