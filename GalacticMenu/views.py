@@ -41,3 +41,8 @@ def events_view(request):
     for event in events:
         event.percentage = round((event.reservations_count / 37) * 100, 2)  # Процент на резервации
     return render(request, 'events.html', {'events': events})
+
+
+def gallery_view(request):
+    media = GalerijaKafic.objects.all()
+    return render(request, 'gallery.html', {'media': media})
