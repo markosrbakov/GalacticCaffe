@@ -1,4 +1,4 @@
-# Cafe Bar - Django Application
+# Galactic Caffe Menu - Django Application
 
 ## Опис
 Ова е веб-апликација развиена со Django за мени на кафе бар. Апликацијата овозможува динамичко мени со додавање на продукти во категории. Дополнително, вклучува галерија и управување со настани кои исто така динамички се додаваат во админ панелот , Reservations Counter - Process bar & Reservation Click Button to Call.
