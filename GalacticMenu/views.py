@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from GalacticMenu.models import Product, Event, GalerijaKafic
 from django.utils import timezone
+import json
+import random
 
 def index(request):
     # Земаме сите продукти
@@ -41,6 +43,25 @@ def events_view(request):
     for event in events:
         event.percentage = round((event.reservations_count / 37) * 100, 2)  # Процент на резервации
     return render(request, 'events.html', {'events': events})
+
+
+def get_random_quote():
+    with open("quotes.json", "r", encoding="utf-8") as f:
+        data = json.load(f)  # Ова враќа речник
+
+    all_quotes = data.get("quotes", []) + data.get("motivation_quotes", [])  # Спој ги сите мисли
+
+    if not all_quotes:
+        return "Нема достапни мисли. Додадете нови!"
+
+    return random.choice(all_quotes)  # Бира случајна мисла
+
+
+def quote_view(request):
+    random_quote = get_random_quote()  # Користи ја поправената функција
+
+    return render(request, "quote.html", {"quote": random_quote})
+
 
 
 def gallery_view(request):
