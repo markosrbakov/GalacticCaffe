@@ -16,9 +16,21 @@ def index(request):
     # Земаме уникатни категории
     categories = Product.objects.values_list('kategorija', flat=True).distinct()
 
+    # Вчитување на JSON фајлот
+    with open("quotes.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    quotes = data.get("quotes", [])  # Листата со мисли
+    daily_quote = "Нема достапни мисли за денес."  # Дефолт ако листата е празна
+
+    if quotes:
+        today_index = datetime.date.today().toordinal() % len(quotes)
+        daily_quote = quotes[today_index]
+
     context = {
         'products': products,
-        'categories': categories,  # Додадени категории
+        'categories': categories,
+        'daily_quote': daily_quote,  # Додадена мисла на денот
     }
     return render(request, 'index.html', context)
 
