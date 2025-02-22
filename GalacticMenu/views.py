@@ -4,6 +4,10 @@ from django.utils import timezone
 import json
 import random
 
+
+import json
+import datetime
+
 def index(request):
     # Земаме сите продукти
     products = Product.objects.all()
@@ -34,6 +38,7 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+
 def product_by_category(request, category_name):
     # Филтрираме производи по категорија
     products = Product.objects.filter(kategorija=category_name)
@@ -57,6 +62,11 @@ def events_view(request):
     return render(request, 'events.html', {'events': events})
 
 
+def gallery_view(request):
+    media = GalerijaKafic.objects.all()
+    return render(request, 'gallery.html', {'media': media})
+
+
 def get_random_quote():
     with open("quotes.json", "r", encoding="utf-8") as f:
         data = json.load(f)  # Ова враќа речник
@@ -73,9 +83,3 @@ def quote_view(request):
     random_quote = get_random_quote()  # Користи ја поправената функција
 
     return render(request, "quote.html", {"quote": random_quote})
-
-
-
-def gallery_view(request):
-    media = GalerijaKafic.objects.all()
-    return render(request, 'gallery.html', {'media': media})
