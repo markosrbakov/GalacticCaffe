@@ -56,10 +56,16 @@
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.7);
         }
 
-        .subtext {
-            font-size: 1.5rem;
-            color: #FFD700;
-        }
+       .subtext {
+    position: absolute;
+    bottom: 10px; /* Го позиционира на дното */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 
         .progress {
             height: 30px;
@@ -173,7 +179,6 @@
 
 <div class="header">
     <div class="header-text">
-        <h1>Galactic Cafe</h1>
         <p class="subtext">Since 2017</p>
     </div>
 </div>
