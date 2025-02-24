@@ -271,31 +271,41 @@
         }
         
         /* SKROLL KOPCE*/
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none; /* Initially hidden */
-        }
+    .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensures it's above other elements */
+}
 
-        .scroll-to-top button {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%; /* Makes the button circular */
-            border: 2px solid #007bff; /* Border style */
-            background-color: transparent; /* No background */
-            color: #007bff; /* Text color */
-            font-size: 24px; /* Adjust text size */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
+.scroll-to-top button {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%; /* Circular button */
+    border: none;
+    background: linear-gradient(135deg, #007bff, #00d4ff); /* Gradient effect */
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+}
 
-        .scroll-to-top button:hover {
-            background-color: #007bff;
-            color: white;
-        }
+.scroll-to-top button:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+    background: linear-gradient(135deg, #0056b3, #00a3cc);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.8), 0 0 50px rgba(0, 212, 255, 0.7);
+}
+
+.scroll-to-top button:active {
+    transform: scale(0.95);
+}
+
 
     </style>
 </head>
