@@ -20,21 +20,21 @@ def index(request):
     # Земаме уникатни категории
     categories = Product.objects.values_list('kategorija', flat=True).distinct()
 
-    # Вчитување на JSON фајлот
-    with open("quotes.json", "r", encoding="utf-8") as file:
-        data = json.load(file)
+    # Вчитување на JSON фајлот безбедно
+    try:
+        with open("quotes.json", "r", encoding="utf-8") as file:
+            data = json.load(file)
+        quotes = data.get("quotes", []) + data.get("motivation_quotes", [])
+    except (FileNotFoundError, json.JSONDecodeError):
+        quotes = []
 
-    quotes = data.get("quotes", [])  # Листата со мисли
-    daily_quote = "Нема достапни мисли за денес."  # Дефолт ако листата е празна
-
-    if quotes:
-        today_index = datetime.date.today().toordinal() % len(quotes)
-        daily_quote = quotes[today_index]
+    # Генерирање на случајна мисла при секој refresh
+    daily_quote = random.choice(quotes) if quotes else "Нема достапни мисли. Додадете нови!"
 
     context = {
         'products': products,
         'categories': categories,
-        'daily_quote': daily_quote,  # Додадена мисла на денот
+        'daily_quote': daily_quote,  # Додадена случајна мисла на секој refresh
     }
     return render(request, 'index.html', context)
 
