@@ -25,6 +25,7 @@ class Product(models.Model):
             ('Коктели/Cocktails', 'kokteli'),
             ('Вино/Wine', 'vino'),
             ('Шампајн/Champagne', 'sampajn'),
+            ('Мача/Matcha', 'macha'),
             ('Безалкохолни коктели/Non-alcoholic Cocktails', 'bezalkoholni'),
             ('Наргиле/Shisha', 'nargile'),
             ('Сладолед/Ice-Cream', 'sladoled'),
